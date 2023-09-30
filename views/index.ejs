@@ -15,6 +15,11 @@
             <button type="submit" value="Cortar">Cortar</button>
         </div>
     </form>
+    <div class="url">
+        <% if(url.link) {%>
+            <a href="<%= url.link %>" target="_blank"><%= url.link %></a>
+        <% } %>
+    </div>
 </body>
 
 </html>

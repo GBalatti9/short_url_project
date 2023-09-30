@@ -18,7 +18,8 @@ module.exports = (sequelize, dataTypes) => {
 
     let config = {
         tableName: 'url',
-        tiemstamps: false,
+        createdAt: false,
+        updatedAt: false,
     }
 
     const Url = sequelize.define(alias, cols, config);

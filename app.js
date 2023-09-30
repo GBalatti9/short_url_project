@@ -1,7 +1,10 @@
+// import express from 'express';
+// import { mainRoutes } from './routes/index';
 const express = require('express');
 const { mainRoutes } = require('./routes/index');
 
-const app = express();
+const app = express()
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
