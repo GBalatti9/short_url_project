@@ -31,10 +31,10 @@ module.exports = {
                         const newShortId = id();
                         const newUrl = await Url.create({
                             url: longUrl,
-                            short_url: req.hostname + newShortId,
+                            short_url: req.hostname + '.' + newShortId,
                         })
                         // console.log(createUrl);
-                        res.render('index', { url: { link: `${newUrl.short_url}`, errors: {} } });
+                        res.render('index', { url: { link: `${newUrl.short_url}` }, errors: {} });
                     } catch (error) {
                         console.log(error);
                     }
@@ -56,7 +56,7 @@ module.exports = {
             if (!findUrl) {
                 return res.status(404).send('Page not found');
             } else {
-                console.log(findUrl);
+                // console.log(findUrl);
                 const url = findUrl.url
                 res.redirect(`${url}`);
             }
