@@ -1,5 +1,5 @@
 const express = require('express');
-const { getIndex, postIndex } = require('../controllers/mainControllers');
+const { getIndex, postIndex, getUrlLink } = require('../controllers/mainControllers');
 
 const router = express.Router();
 
@@ -8,6 +8,9 @@ router.get('/', getIndex);
 
 // @POST -->
 router.post('/', postIndex);
+
+// @GET --> urlIdUnique
+router.get('/:urlIdUnique', getUrlLink)
 
 module.exports = {
     router,
