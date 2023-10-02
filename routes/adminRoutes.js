@@ -1,13 +1,16 @@
 const express = require('express');
-const { getAdmin, postAdmin } = require('../controllers/adminControllers');
+const { getAdmin, postAdmin, getDashboard } = require('../controllers/adminControllers');
 
 const router = express.Router();
 
 // @GET --> /admin
-router.get('/admin', getAdmin);
+router.get('/adminLogin', getAdmin);
 
 // @POST --> /admin
-router.post('/admin', postAdmin);
+router.post('/adminLogin', postAdmin);
+
+// @GET --> /admin
+router.get('/admin', getDashboard);
 
 module.exports = {
     adminRoutes: router,

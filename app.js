@@ -14,6 +14,7 @@ app.set('view engine', 'ejs');
 app.set('views', [
     path.join(__dirname, './views/'),
     path.join(__dirname, './views/login'),
+    path.join(__dirname, './views/admin'),
 ])
 app.use(adminRoutes);
 app.use(mainRoutes);

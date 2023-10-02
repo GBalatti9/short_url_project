@@ -6,5 +6,9 @@ module.exports = {
     postAdmin: (req, res) => {
         console.log(req.body);
         res.redirect('/');
+    },
+
+    getDashboard: (req, res) => {
+        res.render('adminView');
     }
 }
