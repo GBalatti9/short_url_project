@@ -1,5 +1,7 @@
-const { router } = require('./mainRoutes');
+const { mainRoutes } = require('./mainRoutes');
+const { adminRoutes } = require('./adminRoutes');
 
 module.exports = {
-    mainRoutes: router,
+    mainRoutes,
+    adminRoutes,
 }

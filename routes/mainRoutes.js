@@ -14,5 +14,5 @@ router.post('/', validateUrl, postIndex);
 router.get('/:urlIdUnique', getUrlLink)
 
 module.exports = {
-    router,
+    mainRoutes: router,
 }

@@ -54,6 +54,7 @@ module.exports = {
                 }
             })
             if (!findUrl) {
+                console.log('ESTOY ACA');
                 return res.status(404).send('Page not found');
             } else {
                 // console.log(findUrl);
