@@ -19,14 +19,14 @@
     flex-column
     bg-secondary-subtle" 
     style="min-height: 100vh;">
-    <h1>Cortá la url</h1>
-        <form action="/" method="post" class="col-4">
+    <h1>Cortar link</h1>
+        <form action="/" method="post" class="col-xs-10 col-md-8 col-lg-6">
             <div class="row m-auto">
-                <div class="input-group mb-3">
+                <div class="input-group input-group-lg">
                     <input type="text" name="longUrl" id="longUrl" 
-                    class='form-control <%= errors.msg ? 'is-invalid' : '' %>' placeholder="Ingresá la url"
+                    class='form-control size-lg <%= errors.msg ? 'is-invalid' : '' %>' placeholder="Ingresá la url"
                     aria-describedby="button-addon2">
-                    <button type="submit" value="Cortar" class="btn btn-primary col-4" id="button-addon2">Cortar</button>
+                    <button type="submit" value="Cortar" class="btn btn-primary col-4" disabled id="button-addon2">Cortar</button>
                 </div>
             </div>
         </form>
