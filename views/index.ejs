@@ -20,24 +20,25 @@
     bg-secondary-subtle" 
     style="min-height: 100vh;">
     <h1>Cortá la url</h1>
-    <form action="/" method="post" class="col-4">
-        <div class="row m-auto">
-            <div class="input-group mb-3 ">
-                <input type="text" name="longUrl" id="longUrl" class="form-control" placeholder="Ingresá la url"
+        <form action="/" method="post" class="col-4">
+            <div class="row m-auto">
+                <div class="input-group mb-3 ">
+                    <input type="text" name="longUrl" id="longUrl" 
+                    class='form-control <%= errors.msg ? 'is-invalid' : '' %>' placeholder="Ingresá la url"
                     aria-describedby="button-addon2">
-                <button type="submit" value="Cortar" class="btn btn-primary col-4" id="button-addon2">Cortar</button>
+                    <button type="submit" value="Cortar" class="btn btn-primary col-4" id="button-addon2">Cortar</button>
+                </div>
             </div>
-        </div>
-    </form>
-    <% if(errors.msg) {%>
-        <div class="errors">
-            <% errors.msg.forEach(error=> { %>
-                <p class="text-danger text-center">
-                    <%= error %>
-                </p>
-                <% }); %>
-        </div>
-        <% } %>
+        </form>
+        <% if(errors.msg) {%>
+            <div class="errors">
+                <% errors.msg.forEach(error=> { %>
+                    <p class="text-danger text-center">
+                        <%= error %>
+                    </p>
+                    <% }); %>
+            </div>
+            <% } %>
             <div class="url">
                 <% if(url.link) {%>
                     <a href="<%= url.link %>" target="_blank">
