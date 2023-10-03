@@ -1,6 +1,7 @@
 const { Url } = require('../database/models');
 const { id } = require('../plugins/index');
-const { validationResult } = require('express-validator');
+// const { validationResult } = require('express-validator');
+const { validationResult } = require('../plugins/index');
 
 module.exports = {
     getIndex: (req, res) => {
@@ -11,7 +12,7 @@ module.exports = {
     postIndex: async (req, res) => {
         const { longUrl } = req.body;
         const result = validationResult(req).errors;
-        console.log(result);
+        console.log("VALIDATION RESULT", result);
         if (result.length > 0) {
             const message = result.map(r => r.msg);
             return res.render('index', { url: {}, errors: { msg: [...message] } })

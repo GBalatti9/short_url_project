@@ -1,9 +1,14 @@
-const { check } = require('express-validator');
+const { check, validationResult } = require('express-validator');
 
 const checkValidations = () => {
-    return check()
+    return check;
+}
+
+const createValidationResult = (req) => {
+    return validationResult(req);
 }
 
 module.exports = {
-    check: checkValidations,
+    check: checkValidations(),
+    validationResult: createValidationResult,
 }
