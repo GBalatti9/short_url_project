@@ -1,4 +1,4 @@
-const { check } = require('express-validator');
+const { check } = require('../../plugins/get-express-validator.plugin');
 
 const validateUrl = [
     check

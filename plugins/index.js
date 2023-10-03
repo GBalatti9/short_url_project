@@ -1,8 +1,10 @@
 const { id } = require('./get-shortid.plugin');
 const { hashPassword, comparePassword } = require('./get-bcrypt.plugin');
+const { check } = require('./get-express-validator.plugin');
 
 module.exports = {
     id,
     hashPassword,
-    comparePassword
+    comparePassword,
+    check,
 }
