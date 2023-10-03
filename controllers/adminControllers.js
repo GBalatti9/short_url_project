@@ -29,9 +29,12 @@ module.exports = {
 
         const result = validationResult(req).errors;
         console.log("RESULT: ", result);
+
         if (result.length > 0) {
             const message = result.map(r => r.msg);
-            return res.render('adminView', { url: {}, errors: { msg: [...message] } })
+            console.log(message);
+            // return res.render('adminView', { url: {}, errors: { msg: [...message] } })
+            return res.status(400).json({ message })
 
         } else {
             try {
