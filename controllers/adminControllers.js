@@ -1,4 +1,5 @@
 const { User } = require('../database/models');
+const { hashPassword, comparePassword } = require('../plugins/index');
 
 module.exports = {
     getAdmin: (req, res) => {
@@ -25,13 +26,19 @@ module.exports = {
         const { registerEmail, registerPassword, registerPasswordCheck, registerCategory } = req.body;
         console.log({registerEmail, registerPassword, registerPasswordCheck, registerCategory});
         try {
+
+            const hashedPassword = hashPassword(registerPassword);
+            if(!comparePassword(registerPasswordCheck, hashedPassword)){
+                return res.redirect('/admin?error=Las contraseñas no coinciden')
+            }
+
             const [user, created] = await User.findOrCreate({
                 where: {
                     email: registerEmail
                 },
                 defaults: {
                     email: registerEmail,
-                    password: registerPassword,
+                    password: hashedPassword,
                     check_password: registerPasswordCheck,
                     category: registerCategory,
                 }

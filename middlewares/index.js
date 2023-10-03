@@ -1,4 +1,4 @@
-const { validateUrl } = require('./validateUrlMiddleware');
+const { validateUrl } = require('./validations/validateUrlMiddleware');
 
 module.exports = {
     validateUrl
