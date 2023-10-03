@@ -1,5 +1,6 @@
 const { User } = require('../database/models');
 const { hashPassword, comparePassword } = require('../plugins/index');
+const { validationResult } = require('../plugins/index');
 
 module.exports = {
     getAdmin: (req, res) => {
@@ -16,7 +17,7 @@ module.exports = {
             const allUsers = await User.findAll({
                 attributes: ['id', 'email', 'category']
             })
-            res.render('adminView', {users: allUsers});
+            res.render('adminView', { users: allUsers, errors: {} });
         } catch (error) {
             console.log(error);
         }
@@ -24,29 +25,38 @@ module.exports = {
 
     postUser: async (req, res) => {
         const { registerEmail, registerPassword, registerPasswordCheck, registerCategory } = req.body;
-        console.log({registerEmail, registerPassword, registerPasswordCheck, registerCategory});
-        try {
+        console.log({ registerEmail, registerPassword, registerPasswordCheck, registerCategory });
 
-            const hashedPassword = hashPassword(registerPassword);
-            if(!comparePassword(registerPasswordCheck, hashedPassword)){
-                return res.redirect('/admin?error=Las contraseñas no coinciden')
-            }
+        const result = validationResult(req).errors;
+        console.log("RESULT: ", result);
+        if (result.length > 0) {
+            const message = result.map(r => r.msg);
+            return res.render('adminView', { url: {}, errors: { msg: [...message] } })
 
-            const [user, created] = await User.findOrCreate({
-                where: {
-                    email: registerEmail
-                },
-                defaults: {
-                    email: registerEmail,
-                    password: hashedPassword,
-                    check_password: registerPasswordCheck,
-                    category: registerCategory,
+        } else {
+            try {
+
+                const hashedPassword = hashPassword(registerPassword);
+                if (!comparePassword(registerPasswordCheck, hashedPassword)) {
+                    return res.redirect('/admin?error=Las contraseñas no coinciden')
                 }
-            })
-            if(!created) return res.render('adminView');
-            res.redirect('/admin');
-        } catch (error) {
-            console.log(error);
+
+                const [user, created] = await User.findOrCreate({
+                    where: {
+                        email: registerEmail
+                    },
+                    defaults: {
+                        email: registerEmail,
+                        password: hashedPassword,
+                        check_password: registerPasswordCheck,
+                        category: registerCategory,
+                    }
+                })
+                if (!created) return res.render('adminView');
+                res.redirect('/admin');
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
 
