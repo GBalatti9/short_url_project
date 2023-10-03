@@ -1,5 +1,5 @@
 const { Url } = require('../database/models');
-const { id } = require('../plugins/get-shortid.plugin');
+const { id } = require('../plugins/index');
 const { validationResult } = require('express-validator');
 
 module.exports = {
