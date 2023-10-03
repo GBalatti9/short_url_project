@@ -36,9 +36,15 @@ module.exports = {
                     category: registerCategory,
                 }
             })
+            if(!created) return res.render('adminView');
             res.redirect('/admin');
         } catch (error) {
             console.log(error);
         }
+    },
+
+    deleteUser: (req, res) => {
+        const { id } = req.params.id;
+
     }
 }

@@ -24,14 +24,13 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <% users.forEach(user=>{ %>
                     <tr>
-                        <% users.forEach(user=>{ %>
-
                             <th scope="row"><%= user.id %></th>
                             <td><%= user.email %></td>
                             <td><%= user.category %></td>
                             <td>
-                                <form action="" method="post">
+                                <form action="admin/<%= user.id %>/delete?_method=DELETE" method="post">
                                     <button>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                         class="bi bi-trash" viewBox="0 0 16 16">
@@ -42,9 +41,9 @@
                                     </svg>
                                 </button>
                             </form>
-                        <% }) %>
                         </td>
                     </tr>
+                    <% }) %>
                 </tbody>
             </table>
             <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear un
