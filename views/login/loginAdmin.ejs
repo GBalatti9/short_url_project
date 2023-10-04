@@ -22,8 +22,15 @@
             <input type="password" name="loginPassword" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
-        <button type="submit" class="btn btn-primary" id="btnSubmit" disabled>Iniciar sesión</button>
+        <button type="submit" class="btn btn-primary" id="btnSubmit">Iniciar sesión</button>
     </form>
+    <% if(errors.msg) {%>
+        <% errors.msg.forEach(error=> { %>
+            <p class="text-danger text-center">
+                <%= error %>
+            </p>
+        <% }); %>
+    <% } %>
 </body>
     <script src="../../js/loginAdmin.js"></script>
 </html>

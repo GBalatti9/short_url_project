@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     const checkErrors = () => {
         let arr = [mail, password]
         const allValid = arr.every(e => e.classList.contains('is-valid'));
-        allValid ? initSessionBtn.disabled = false : initSessionBtn.disabled = true;
+        // allValid ? initSessionBtn.disabled = false : initSessionBtn.disabled = true;
     }
 
     setTimeout(() => {

@@ -4,12 +4,37 @@ const { validationResult } = require('../plugins/index');
 
 module.exports = {
     getAdmin: (req, res) => {
-        res.render('loginAdmin')
+        res.render('loginAdmin', { errors: {} })
     },
 
-    postAdmin: (req, res) => {
-        console.log(req.body);
-        res.redirect('/admin');
+    postAdmin: async (req, res) => {
+
+        const { loginEmail, loginPassword } = req.body;
+
+        const result = validationResult(req).errors;
+        if(result.length > 0){
+            const message = result.map(r => r.msg)
+            return res.render( 'loginAdmin', {errors: { msg: [...message] } } )
+        }
+
+        try {
+            const findEmail = await User.findOne({ 
+                where: {
+                    email: loginEmail
+                }
+            });
+            if(!findEmail){
+                return res.render( 'loginAdmin', { errors: {msg: ['Usuario incorrecto']} } );
+            } else {
+                if(!comparePassword(loginPassword, findEmail.password)){
+                    return res.render( 'loginAdmin', { errors: {msg: ['Contraseña incorrecta']} } );
+                } else {
+                    return res.redirect('/admin');
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
     },
 
     getDashboard: async (req, res) => {

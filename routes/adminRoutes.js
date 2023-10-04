@@ -1,6 +1,7 @@
 const express = require('express');
 const { getAdmin, postAdmin, getDashboard, postUser, deleteUser } = require('../controllers/adminControllers');
-const { validateCreateUser } = require('../middlewares/index');
+const { validateCreateUser, validateLoginAdmin } = require('../middlewares/index');
+
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ const router = express.Router();
 router.get('/adminLogin', getAdmin);
 
 // @POST --> /admin
-router.post('/adminLogin', postAdmin);
+router.post('/adminLogin', validateLoginAdmin, postAdmin);
 
 // @POST --> /createUser
 router.post('/createUser', validateCreateUser, postUser);
