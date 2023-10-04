@@ -1,6 +1,6 @@
 const express = require('express');
 const { getAdmin, postAdmin, getDashboard, postUser, deleteUser } = require('../controllers/adminControllers');
-const { validateCreateUser, validateLoginAdmin } = require('../middlewares/index');
+const { validateCreateUser, validateLoginAdmin } = require('../middlewares/validations/index');
 
 
 const router = express.Router();

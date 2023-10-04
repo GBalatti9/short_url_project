@@ -1,6 +1,6 @@
 const express = require('express');
 const { getIndex, postIndex, getUrlLink } = require('../controllers/mainControllers');
-const { validateUrl } = require('../middlewares/index');
+const { validateUrl } = require('../middlewares/validations/index');
 
 const router = express.Router();
 

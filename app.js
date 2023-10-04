@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const methodOverride = require('method-override');
 
-const { mainRoutes, adminRoutes } = require('./routes/index');
+const { mainRoutes, adminRoutes, userRoutes } = require('./routes/index');
 
 const app = express()
 
@@ -20,6 +20,7 @@ app.set('views', [
     path.join(__dirname, './views/admin'),
 ])
 app.use(adminRoutes);
+app.use(userRoutes);
 app.use(mainRoutes);
 
 app.listen(3000, () => {
