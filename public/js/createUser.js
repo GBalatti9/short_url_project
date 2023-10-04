@@ -8,8 +8,15 @@ window.addEventListener('load', () => {
     const btnOpenModal = document.querySelector('#btnOpenModal');
     const textPasswordConditions = document.querySelector('.fst-italic');
     const borderPassword = document.querySelector('#borderPw');
+    const createUserBtn = document.querySelector('#submitBtn');
 
     console.log({ mail, password, checkPassword, category, modal, btnOpenModal });
+
+    const checkErrors = () => {
+        let arr = [mail, password, checkPassword, category]
+        const allValid = arr.every(e => e.classList.contains('is-valid'));
+        allValid ? createUserBtn.disabled = false : createUserBtn.disabled = true;
+    }
 
     btnOpenModal.addEventListener('click', () => {
         setTimeout(() => {
@@ -32,7 +39,7 @@ window.addEventListener('load', () => {
             mail.classList.add('is-valid');
             mail.classList.remove('is-invalid');
         }
-
+        checkErrors();
     })
 
     password.addEventListener('input', (e) => {
@@ -52,7 +59,7 @@ window.addEventListener('load', () => {
             password.classList.remove('is-valid');
             password.classList.add('is-invalid');
         }
-
+        checkErrors();
     })
 
     checkPassword.addEventListener('input', (e) => {
@@ -66,6 +73,7 @@ window.addEventListener('load', () => {
             checkPassword.classList.add('is-invalid');
             checkPassword.classList.remove('is-valid');
         }
+        checkErrors();
     })
 
     category.addEventListener('input', e => {
@@ -77,5 +85,6 @@ window.addEventListener('load', () => {
             category.classList.add('is-valid');
             category.classList.remove('is-invalid');
         }
+        checkErrors();
     })
 })
