@@ -33,7 +33,7 @@ module.exports = {
         if (result.length > 0) {
             const message = result.map(r => r.msg);
             console.log(message);
-            // return res.render('adminView', { url: {}, errors: { msg: [...message] } })
+            // return res.render('adminView', { url: {}, errors: { msg: [...message] }, users: [] })
             return res.status(400).json({ message })
 
         } else {

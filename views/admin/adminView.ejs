@@ -22,8 +22,11 @@
             const submitBtn = document.querySelector("#submitBtn");
             const errorContainer = document.querySelector("#errorContainer");
             const closeFormBtn = document.querySelector('#closeFormBtn');
-            console.log({ userForm, submitBtn, errorContainer });
-
+            // console.log({ userForm, submitBtn, errorContainer });
+            submitBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('click');
+            })
             userForm.addEventListener('submit', (e) => {
                 // e.preventDefault(); // Evita que el formulario se envíe de manera predeterminada.
 
@@ -32,7 +35,7 @@
                 const registerPassword = userForm.querySelector('input[name="registerPassword"]').value;
                 const registerPasswordCheck = userForm.querySelector('input[name="registerPasswordCheck"]').value;
                 const registerCategory = userForm.querySelector('select[name="registerCategory"]').value;
-                console.log({ registerEmail, registerPassword, registerPasswordCheck, registerCategory });
+                // console.log({ registerEmail, registerPassword, registerPasswordCheck, registerCategory });
 
                 // Validación simple de campos vacíos (puedes agregar más validaciones según tus necesidades)
                 if (!registerEmail || !registerPassword || !registerPasswordCheck) {
@@ -74,6 +77,7 @@
         })
 
     </script>
+    <script src="../../js/createUser.js"></script>
 
 </html>
 <!-- document.addEventListener('DOMContentLoaded', () => {
