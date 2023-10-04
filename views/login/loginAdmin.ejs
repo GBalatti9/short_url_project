@@ -8,9 +8,12 @@
     align-items-center
     flex-column
     bg-secondary-subtle" 
+
     style="min-height: 100vh;">
+
     <h1>Url Short</h1>
-    <form action="/adminLogin" method="post" class="container border col-sm-3">
+
+    <form action="/adminLogin" method="post" class="container border col-sm-3" id="formLoginAdmin">
         <div class="form-floating mb-3">
             <input type="email" name="loginEmail" class="form-control" id="floatingInput" placeholder="name@example.com">
             <label for="floatingInput">Email</label>
@@ -19,7 +22,8 @@
             <input type="password" name="loginPassword" class="form-control" id="floatingPassword" placeholder="Password">
             <label for="floatingPassword">Password</label>
         </div>
-        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        <button type="submit" class="btn btn-primary" id="btnSubmit" disabled>Iniciar sesión</button>
     </form>
 </body>
+    <script src="../../js/loginAdmin.js"></script>
 </html>

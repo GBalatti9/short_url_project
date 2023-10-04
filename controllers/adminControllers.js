@@ -9,7 +9,7 @@ module.exports = {
 
     postAdmin: (req, res) => {
         console.log(req.body);
-        res.redirect('/');
+        res.redirect('/admin');
     },
 
     getDashboard: async (req, res) => {

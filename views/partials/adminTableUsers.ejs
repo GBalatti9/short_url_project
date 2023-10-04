@@ -12,10 +12,10 @@
         <tr>
                 <th scope="row"><%= user.id %></th>
                 <td><%= user.email %></td>
-                <td><%= user.category %></td>
+                <td><%= user.category === 1 ? 'Administrador' : 'Usuario' %></td>
                 <td>
                     <form action="admin/<%= user.id %>/delete?_method=DELETE" method="post">
-                        <button>
+                        <button style="border: none;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-trash" viewBox="0 0 16 16">
                             <path
