@@ -1,6 +1,5 @@
 const { Url } = require('../database/models');
 const { id } = require('../plugins/index');
-// const { validationResult } = require('express-validator');
 const { validationResult } = require('../plugins/index');
 
 module.exports = {
@@ -32,9 +31,8 @@ module.exports = {
                         const newShortId = id();
                         const newUrl = await Url.create({
                             url: longUrl,
-                            short_url: req.hostname + '.' + newShortId,
+                            short_url: '.' + newShortId,
                         })
-                        // console.log(createUrl);
                         res.render('index', { url: { link: `${newUrl.short_url}` }, errors: {} });
                     } catch (error) {
                         console.log(error);
@@ -48,6 +46,7 @@ module.exports = {
 
     getUrlLink: async (req, res) => {
         const { urlIdUnique } = req.params;
+        console.log({ urlIdUnique });
         try {
             const findUrl = await Url.findOne({
                 where: {
