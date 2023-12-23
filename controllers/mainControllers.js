@@ -24,16 +24,16 @@ module.exports = {
                     }
                 });
                 if (urlExists) {
-                    res.render('index', { url: { link: `${urlExists.short_url}` }, errors: {} })
+                    res.render('index', { url: { link: `${urlExists.short_url}`, linkName: 'shorterUrl' }, errors: {} })
                 }
                 else {
                     try {
                         const newShortId = id();
                         const newUrl = await Url.create({
                             url: longUrl,
-                            short_url: '.' + newShortId,
+                            short_url: newShortId,
                         })
-                        res.render('index', { url: { link: `${newUrl.short_url}` }, errors: {} });
+                        res.render('index', { url: { link: `${newUrl.short_url}`, linkName: 'shorterUrl' },  errors: {} });
                     } catch (error) {
                         console.log(error);
                     }
