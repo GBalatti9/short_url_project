@@ -25,5 +25,8 @@ module.exports = {
     "port": "3307",
     "dialect": "mysql",
     dialectModule: require('mysql2'),
+    "dialectOptions": {
+      "connectTimeout": 120000
+    }
   }
 }
