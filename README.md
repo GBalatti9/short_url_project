@@ -1,4 +1,5 @@
 # URL Shortener Project
+## Link: https://shorturl-r33a.onrender.com/
 
 This is a backend project designed for URL shortening. It leverages Node.js, Express, Sequelize, and MySQL. Users can input a long URL through a form and receive a "newUrl" in return, serving as the shortened link.
 
