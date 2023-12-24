@@ -18,15 +18,12 @@ module.exports = {
     dialectModule: require('mysql2'),
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "db_short_url",
-    "host": "44.226.145.213",
-    "port": "3307",
+    "username": process.env.DB_USERNAME,
+    "password": process.env.DB_PASSWORD,
+    "database": process.env.DB_DBNAME,
+    "host": process.env.DB_HOST,
+    "port": process.env.PORT,
     "dialect": "mysql",
     dialectModule: require('mysql2'),
-    "dialectOptions": {
-      "connectTimeout": 120000
-    }
   }
 }
